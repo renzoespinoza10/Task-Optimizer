@@ -1,5 +1,6 @@
 import time
 import subprocess
+import datetime
 
 
 # functions to format date, time
@@ -7,9 +8,11 @@ def format_date(x):
     date_list = x.split(sep="-")
     return list(map(int, date_list))
 
+
 def format_time(x):
     time_list = x.split(sep="-")
     return list(map(int, time_list))
+
 
 def given_datetime(given_date, given_time):
 
@@ -17,6 +20,7 @@ def given_datetime(given_date, given_time):
     return datetime.datetime(given_date[2], given_date[1], given_date[0], given_time[0], given_time[1], given_time[2])
 
 # join the meeting
+
 
 def join_meeting(meeting_date, meeting_time):
 
@@ -26,15 +30,19 @@ def join_meeting(meeting_date, meeting_time):
 
     # time difference between current and meeting time
     wait_time = (required_datetime - datetime.datetime.now().replace(microsecond=0)).total_seconds()
-    
-    print("Your ZOOM meeting starts in" + str(wait_time/60) + " min")
-    
+    print("Required", required_datetime)
+    print("Now time", datetime.datetime.now().replace(microsecond=0))
+    print("Wait time", wait_time)
+
+    print("Your ZOOM meeting starts in " + str(wait_time/60) + " min")
+
     time.sleep(wait_time)
 
     subprocess.Popen("C:\\Users\\rezog\AppData\\Roaming\\Zoom\\bin\\Zoom.exe")
 
 
-def zoom(meeting_date,given_time):
-    join_meeting(meeting_date, given_time);
+def zoom(meeting_date, given_time):
+    join_meeting(meeting_date, given_time)
 
-    
+
+zoom("09-06-2021", "16-25-59")
