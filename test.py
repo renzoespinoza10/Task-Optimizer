@@ -8,19 +8,24 @@ root.title("Task Optimizer")
 
 global on_off
 on_off = False
+programs = []
 
 
 def add_program():
-    programs = []
+    for label in frame3.winfo_children():
+        label.destroy()
     file = filedialog.askopenfilename(initialdir="/", title="Select File",
                                       filetypes=(("executables", "*.exe"), ("all file types", "*.*")))
     programs.append(file)
-    y_pos = 0.25
+
     for prog in programs:
-        label = tk.Label(frame3, text=file, font=("Helvetica", 7), bg="grey")
-        label.pack(side="top")
-        program_button.place(relx=0.5, rely=y_pos, anchor="center")
-        y_pos -= .03
+        label = tk.Label(frame3, text=prog, font=("Helvetica", 7), bg="grey")
+        label.pack()
+
+
+def run():
+    for prog in programs:
+        os.startfile(prog)
 
 
 def switch():
@@ -53,18 +58,22 @@ print(time_entry)
 
 frame3 = tk.Frame(frame1, bg="green")
 frame3.place(relwidth=0.5, relheight=0.6, relx=0.5)
-program_button = tk.Button(frame3, text="Enter the Program", command=add_program)
-program_button.place(relx=0.5, rely=0.8, anchor="center")
+frame4 = tk.Frame(canvas, bg="green")
+frame4.place(relwidth=0.23, relheight=0.05, rely=0.5, relx=0.62)
+program_button = tk.Button(frame4, text="Enter the Program", command=add_program)
+program_button.pack()
+#program_button.place(relx=0.5, rely=0.8, anchor="center")
 
-add = tk.Button(frame1, text="Submit \n Event", padx=4, pady=2)
+add = tk.Button(frame1, text="Submit \n Event", padx=4, pady=2, command=run)
 add.place(relx=0.5, rely=0.7, anchor="center")
 
 label4 = tk.Label(canvas, text="Use Google Calendar Schedule?")
-label4.pack(side="top")
-on = tk.PhotoImage(file="on2.png")
-off = tk.PhotoImage(file="off2.png")
-toggle = tk.Button(canvas, image=off, command=switch, bd=0)
+label4.place(relx=0.35, rely=0.1)
+"""
+on = tk.PhotoImage(file="on3.png")
+off = tk.PhotoImage(file="off3.png")
+toggle = tk.Button(canvas, image=off, command=switch, bd=0, bg='#47A3BF')
 toggle.pack()
-
+"""
 
 root.mainloop()
