@@ -8,8 +8,8 @@ import subprocess
 df = pd.read_excel('meetingschedule.xlsx')
 df_new = pd.DataFrame()
 dt = datetime.now().strftime("%m/%d/%Y")
-print(df_new, "dt", dt)
-print(dt in df.values[2])
+print("dt", df["Time"])
+
 # infinite loop that keeps on checking when to open zoom
 while(True):
     # check current time ct
