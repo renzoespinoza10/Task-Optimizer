@@ -21,3 +21,4 @@ while(True):
             print("opening zoom")
             # Open the Zoom app
             subprocess.Popen("C:\\Users\\rezog\\AppData\\Roaming\\Zoom\\bin\\Zoom.exe")
+            time.sleep(20)
