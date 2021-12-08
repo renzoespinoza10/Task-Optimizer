@@ -1,7 +1,2 @@
-<<<<<<< HEAD,,,
-,Date,Time,Programs and Websites
-0,DD/MM/YYYY,HH:MM (Military),"['http://youtube.com', 'http://amazon.com']"
-,,,
-,,,
-,,,
-,,,
+,Date,Time,Programs and Websites,Repeat Daily,Repeat Monthly
+0,07/12/2021,11:00,"['https://canvas.rice.edu/login?needs_cookies=1', 'https://www.gradescope.com/account', 'https://www.mathway.com/LinearAlgebra']",1,0
